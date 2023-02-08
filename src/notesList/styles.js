@@ -14,7 +14,7 @@ const stylesFn = () => StyleSheet.create({
         padding: 10,
         borderRadius: 8,
         border: '1px solid #5f6368',
-        maxWidth: '45%',
+        width: '45%',
         marginVertical: 10
     },
     container:{

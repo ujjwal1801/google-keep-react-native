@@ -1,21 +1,27 @@
 import { SafeAreaView } from "react-native";
 import { View, Text } from "react-native-web"
 import stylesFn from "./styles"
+import { useSelector } from "react-redux";
 
 const styles = stylesFn();
 const NotesList = () => {
+
+
+    const data = useSelector(state => state.notes);
+
     return(
         <SafeAreaView>
             <View style={styles.container}>
-                <View style={styles.noteContainer}> 
-                    <Text style={styles.text}>Lorem Ipsum ahsvfhas fhbsahj fbjh asvjhva jh Lorem abskbas kfjbsaf</Text>
-                </View>
-                <View style={styles.noteContainer}> 
-                    <Text style={styles.text}>Lorem Ipsum ahsvfhas fhbsahj fbjh asvjhva jh Lorem abskbas kfjbsaf</Text>
-                </View>
-                <View style={styles.noteContainer}> 
-                    <Text style={styles.text}>Lorem Ipsum ahsvfhas fhbsahj fbjh asvjhva jh Lorem abskbas kfjbsaf</Text>
-                </View>
+                {
+                    data.map(item=>{
+                        return(
+                            <View style={styles.noteContainer} key={item.id}> 
+                                <Text style={styles.text}>{item.text}</Text>
+                            </View>
+                        )
+                    })
+                }
+                
             </View>
         </SafeAreaView>
     )
